@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+    title="L&V Cocktails | Event Bartending"
+    description="Licensed & insured mobile bartending for weddings, parties, and corporate events in Austin & Central Texas."
+>
+    <main class="bg-base-100">
+        <!-- HERO -->
+        <section class="py-16 md:py-24 bg-base-200">
+            <div class="container mx-auto px-4 max-w-5xl">
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">Professional Event Bartending for Weddings & Parties</h1>
+                <p class="text-lg text-base-content/70 max-w-2xl mb-6">
+                    Licensed & insured mobile bartenders serving Austin & Central Texas. We bring the bar to you—so you can actually enjoy your own event.
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <a href="#quote" class="btn btn-primary rounded-full"> Request a quote </a>
+                    <a href="tel:+1XXXXXXXXXX" class="btn btn-outline rounded-full"> Call now </a>
+                </div>
+                <p class="mt-4 text-sm text-base-content/60">TABC-compliant • COI available • Perfect for weddings, private parties & corporate events</p>
+            </div>
+        </section>
+
+        <!-- PACKAGES (simple static for now; we can wire to Sanity later) -->
+        <section class="py-16">
+            <div class="container mx-auto px-4 max-w-5xl">
+                <h2 class="text-2xl md:text-3xl font-bold mb-6">Services & Packages</h2>
+                <div class="grid gap-6 md:grid-cols-3">
+                    <article class="card bg-base-200 shadow-sm">
+                        <div class="card-body">
+                            <h3 class="card-title">Bartender Only</h3>
+                            <p>Professional bartender; you provide the alcohol & mixers. Includes tools & basic garnish.</p>
+                        </div>
+                    </article>
+                    <article class="card bg-base-200 shadow-sm">
+                        <div class="card-body">
+                            <h3 class="card-title">Bartender + Setup</h3>
+                            <p>Everything in Bartender Only plus mobile bar, ice, coolers, and full bar setup.</p>
+                        </div>
+                    </article>
+                    <article class="card bg-base-200 shadow-sm">
+                        <div class="card-body">
+                            <h3 class="card-title">Full Service</h3>
+                            <p>We handle the full bar experience: bar, mixers, signature cocktails, and custom menus.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUOTE FORM (backend-free using FormSubmit; replace email & phone) -->
+        <section id="quote" class="py-16 bg-base-200">
+            <div class="container mx-auto px-4 max-w-3xl">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4">Request a Quote</h2>
+                <p class="text-base-content/70 mb-6">Tell us about your event and we’ll respond with pricing and availability.</p>
+
+                <form action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST" class="grid gap-4">
+                    <!-- FormSubmit options -->
+                    <input type="hidden" name="_captcha" value="false" />
+                    <input type="hidden" name="_subject" value="New Quote Request — L&V Cocktails" />
+                    <input type="hidden" name="_template" value="table" />
+
+                    <div class="grid gap-4 md:grid-cols-2">
+                        <label class="form-control">
+                            <span class="label-text">Name</span>
+                            <input name="name" required class="input input-bordered" />
+                        </label>
+                        <label class="form-control">
+                            <span class="label-text">Email</span>
+                            <input type="email" name="email" required class="input input-bordered" />
+                        </label>
+                    </div>
+
+                    <div class="grid gap-4 md:grid-cols-2">
+                        <label class="form-control">
+                            <span class="label-text">Phone</span>
+                            <input name="phone" class="input input-bordered" />
+                        </label>
+                        <label class="form-control">
+                            <span class="label-text">Event date</span>
+                            <input type="date" name="date" class="input input-bordered" />
+                        </label>
+                    </div>
+
+                    <div class="grid gap-4 md:grid-cols-2">
+                        <label class="form-control">
+                            <span class="label-text">Guest count</span>
+                            <input type="number" name="guests" min="1" class="input input-bordered" />
+                        </label>
+                        <label class="form-control">
+                            <span class="label-text">Location / ZIP</span>
+                            <input name="location" class="input input-bordered" />
+                        </label>
+                    </div>
+
+                    <label class="form-control">
+                        <span class="label-text">Notes</span>
+                        <textarea
+                            name="notes"
+                            class="textarea textarea-bordered"
+                            rows="4"
+                            placeholder="Tell us about your event, venue, and any signature cocktail ideas."></textarea>
+                    </label>
+
+                    <button type="submit" class="btn btn-primary rounded-full mt-2"> Send request </button>
+                </form>
+            </div>
+        </section>
+    </main>
+</Layout>
