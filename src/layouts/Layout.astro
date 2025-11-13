@@ -7,78 +7,76 @@ import { fetchData } from '@data/siteConfig';
 import '../styles/globals.css';
 
 interface Props {
-    title: string;
-    addTitleSuffix?: boolean;
+    title?: string;
     description?: string;
-    image?: CustomImage;
 }
 
-const { addTitleSuffix, description, image } = Astro.props;
-
-const configData: SiteConfig = (await fetchData()) || {};
-const titleSuffix = configData.titleSuffix && addTitleSuffix !== false ? configData.titleSuffix : undefined;
-const title = [Astro.props.title, titleSuffix].filter(Boolean).join(' | ');
-const resolvedImage = image?.src ? { src: new URL(image.src, Astro.site).toString() } : undefined;
-const canonicalURL = new URL(Astro.request.url, Astro.site);
-
-/**
- * Enforce some standard canonical URL formatting across the site.
- */
-function formatCanonicalURL(url: string | URL) {
-    const path = url.toString();
-    const hasQueryParams = path.includes('?');
-    // If there are query params, make sure the URL has no trailing slash
-    if (hasQueryParams) {
-        path.replace(/\/?$/, '');
-    }
-    // otherwise, canonical URL always has a trailing slash
-    return path.replace(/\/?$/, hasQueryParams ? '' : '/');
-}
+const {
+    title = 'L&V Mixology | Luxury Mobile Bartending',
+    description = 'Luxury mobile bartending and cocktail service for weddings, private events, and corporate experiences.'
+} = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en" class="bg-slate-950">
     <head>
-        <!-- High Priority Global Metadata -->
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{title}</title>
-        <meta name="generator" content={Astro.generator} />
-
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
-
-        <!-- Low Priority Global Metadata -->
-        {configData.favicon?.src && <link rel="icon" type="image/svg+xml" href={configData.favicon.src} />}
-        <link rel="sitemap" href="/sitemap-index.xml" />
-
-        <!-- Page Metadata -->
-        <link rel="canonical" href={formatCanonicalURL(canonicalURL)} />
         <meta name="description" content={description} />
-
-        <!-- Open Graph / Facebook -->
-        <meta property="og:url" content={formatCanonicalURL(canonicalURL)} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        {resolvedImage?.src && <meta property="og:image" content={resolvedImage.src} />}
-
-        <!-- X/Twitter -->
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={formatCanonicalURL(canonicalURL)} />
-        <meta property="twitter:title" content={title} />
-        <meta property="twitter:description" content={description} />
-        {resolvedImage?.src && <meta property="twitter:image" content={resolvedImage.src} />}
     </head>
-    <body class="antialiased">
-        <Header {...configData.header} data-sb-field-path={`${configData._id}:header`} />
-        <slot />
-        <Footer {...configData.footer} data-sb-field-path={`${configData._id}:footer`} />
-        <script is:inline>
-            window.addEventListener('stackbitObjectsChanged', () => {
-                window.location.reload();
-            });
-        </script>
+    <body class="bg-slate-950 text-slate-100 antialiased">
+        <!-- Sticky top navigation -->
+        <header class="sticky top-0 z-40 border-b border-slate-800 bg-slate-950/90 backdrop-blur">
+            <nav class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
+                <!-- Brand / logo -->
+                <a href="/" class="flex items-baseline gap-2">
+                    <span class="tracking-[0.35em] uppercase text-[0.65rem] text-amber-300"> L&V </span>
+                    <span class="font-semibold text-sm md:text-base"> Mixology </span>
+                </a>
+
+                <!-- Desktop nav -->
+                <div class="hidden md:flex items-center gap-6 text-xs md:text-sm">
+                    <a href="#quote-form" class="text-slate-200 hover:text-amber-300 transition"> Get a Quote </a>
+                    <a href="#services" class="text-slate-400 hover:text-amber-200 transition"> Services </a>
+                    <a href="#staffing" class="text-slate-400 hover:text-amber-200 transition"> Staffing </a>
+                    <a href="#beverages" class="text-slate-400 hover:text-amber-200 transition"> Beverage Options </a>
+                    <a href="#contact" class="text-slate-400 hover:text-amber-200 transition"> Contact </a>
+
+                    <a
+                        href="#quote-form"
+                        class="inline-flex items-center justify-center rounded-full px-4 py-2 text-xs font-semibold bg-amber-400 text-slate-950 hover:bg-amber-300 transition shadow-md shadow-amber-500/40"
+                    >
+                        Start Your Quote
+                    </a>
+                </div>
+
+                <!-- Mobile: simple “Get a Quote” button -->
+                <div class="md:hidden">
+                    <a
+                        href="#quote-form"
+                        class="inline-flex items-center justify-center rounded-full px-4 py-2 text-xs font-semibold bg-amber-400 text-slate-950 hover:bg-amber-300 transition shadow-md shadow-amber-500/40"
+                    >
+                        Get a Quote
+                    </a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Page content -->
+        <div class="pb-10">
+            <slot />
+        </div>
+
+        <!-- Simple footer -->
+        <footer id="contact" class="border-t border-slate-800 bg-slate-950/95 text-xs text-slate-500">
+            <div class="max-w-5xl mx-auto px-4 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                <p>L&V Mixology · Austin, TX · Luxury Mobile Bartending</p>
+                <p>
+                    Email:
+                    <a href="mailto:info@lvmixology.com" class="text-amber-300 hover:text-amber-200"> info@lvmixology.com </a>
+                </p>
+            </div>
+        </footer>
     </body>
 </html>

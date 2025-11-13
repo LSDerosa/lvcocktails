@@ -2,110 +2,477 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout
-    title="L&V Cocktails | Event Bartending"
-    description="Licensed & insured mobile bartending for weddings, parties, and corporate events in Austin & Central Texas."
->
-    <main class="bg-base-100">
-        <!-- HERO -->
-        <section class="py-16 md:py-24 bg-base-200">
-            <div class="container mx-auto px-4 max-w-5xl">
-                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">Professional Event Bartending for Weddings & Parties</h1>
-                <p class="text-lg text-base-content/70 max-w-2xl mb-6">
-                    Licensed & insured mobile bartenders serving Austin & Central Texas. We bring the bar to you—so you can actually enjoy your own event.
+<Layout title="L&V Mixology | Luxury Mobile Bartending">
+    <main class="bg-slate-950 text-slate-100 min-h-screen">
+        <!-- Hero -->
+        <section class="relative overflow-hidden border-b border-slate-800">
+            <div class="absolute inset-0 opacity-40 bg-gradient-to-br from-amber-500/20 via-fuchsia-500/10 to-slate-900"></div>
+            <div class="relative max-w-5xl mx-auto px-4 py-16 md:py-20">
+                <p class="tracking-[0.25em] uppercase text-xs md:text-sm text-amber-300 mb-4">L&amp;V Mixology</p>
+                <h1 class="text-3xl md:text-5xl font-semibold leading-tight mb-4">
+                    Bespoke Cocktail Service<br class="hidden md:block" />
+                    for Unforgettable Events
+                </h1>
+                <p class="text-slate-300 max-w-2xl mb-8">
+                    Tell us about your event and we&rsquo;ll follow up with a tailored quote, curated bar menu, and staffing recommendations.
                 </p>
-                <div class="flex flex-wrap gap-3">
-                    <a href="#quote" class="btn btn-primary rounded-full"> Request a quote </a>
-                    <a href="tel:+1XXXXXXXXXX" class="btn btn-outline rounded-full"> Call now </a>
-                </div>
-                <p class="mt-4 text-sm text-base-content/60">TABC-compliant • COI available • Perfect for weddings, private parties & corporate events</p>
-            </div>
-        </section>
-
-        <!-- PACKAGES (simple static for now; we can wire to Sanity later) -->
-        <section class="py-16">
-            <div class="container mx-auto px-4 max-w-5xl">
-                <h2 class="text-2xl md:text-3xl font-bold mb-6">Services & Packages</h2>
-                <div class="grid gap-6 md:grid-cols-3">
-                    <article class="card bg-base-200 shadow-sm">
-                        <div class="card-body">
-                            <h3 class="card-title">Bartender Only</h3>
-                            <p>Professional bartender; you provide the alcohol & mixers. Includes tools & basic garnish.</p>
-                        </div>
-                    </article>
-                    <article class="card bg-base-200 shadow-sm">
-                        <div class="card-body">
-                            <h3 class="card-title">Bartender + Setup</h3>
-                            <p>Everything in Bartender Only plus mobile bar, ice, coolers, and full bar setup.</p>
-                        </div>
-                    </article>
-                    <article class="card bg-base-200 shadow-sm">
-                        <div class="card-body">
-                            <h3 class="card-title">Full Service</h3>
-                            <p>We handle the full bar experience: bar, mixers, signature cocktails, and custom menus.</p>
-                        </div>
-                    </article>
+                <div class="flex flex-wrap gap-4 items-center">
+                    <a
+                        href="#quote-form"
+                        class="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium bg-amber-400 text-slate-950 hover:bg-amber-300 transition"
+                    >
+                        Start Your Quote
+                    </a>
+                    <p class="text-xs md:text-sm text-slate-400">No obligation. We typically respond within one business day.</p>
                 </div>
             </div>
         </section>
 
-        <!-- QUOTE FORM (backend-free using FormSubmit; replace email & phone) -->
-        <section id="quote" class="py-16 bg-base-200">
-            <div class="container mx-auto px-4 max-w-3xl">
-                <h2 class="text-2xl md:text-3xl font-bold mb-4">Request a Quote</h2>
-                <p class="text-base-content/70 mb-6">Tell us about your event and we’ll respond with pricing and availability.</p>
-
-                <form action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST" class="grid gap-4">
-                    <!-- FormSubmit options -->
-                    <input type="hidden" name="_captcha" value="false" />
-                    <input type="hidden" name="_subject" value="New Quote Request — L&V Cocktails" />
-                    <input type="hidden" name="_template" value="table" />
-
-                    <div class="grid gap-4 md:grid-cols-2">
-                        <label class="form-control">
-                            <span class="label-text">Name</span>
-                            <input name="name" required class="input input-bordered" />
-                        </label>
-                        <label class="form-control">
-                            <span class="label-text">Email</span>
-                            <input type="email" name="email" required class="input input-bordered" />
-                        </label>
-                    </div>
-
-                    <div class="grid gap-4 md:grid-cols-2">
-                        <label class="form-control">
-                            <span class="label-text">Phone</span>
-                            <input name="phone" class="input input-bordered" />
-                        </label>
-                        <label class="form-control">
-                            <span class="label-text">Event date</span>
-                            <input type="date" name="date" class="input input-bordered" />
-                        </label>
-                    </div>
-
-                    <div class="grid gap-4 md:grid-cols-2">
-                        <label class="form-control">
-                            <span class="label-text">Guest count</span>
-                            <input type="number" name="guests" min="1" class="input input-bordered" />
-                        </label>
-                        <label class="form-control">
-                            <span class="label-text">Location / ZIP</span>
-                            <input name="location" class="input input-bordered" />
-                        </label>
-                    </div>
-
-                    <label class="form-control">
-                        <span class="label-text">Notes</span>
-                        <textarea
-                            name="notes"
-                            class="textarea textarea-bordered"
-                            rows="4"
-                            placeholder="Tell us about your event, venue, and any signature cocktail ideas."></textarea>
+        <!-- Quote Form -->
+        <section id="quote-form" class="max-w-5xl mx-auto px-4 py-10 md:py-14">
+            <form
+                name="lv-event-quote"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                class="space-y-10 bg-slate-900/60 border border-slate-800 rounded-2xl px-4 py-8 md:px-8 md:py-10 shadow-2xl shadow-black/40"
+            >
+                <!-- Netlify form name -->
+                <input type="hidden" name="form-name" value="lv-event-quote" />
+                <!-- Honeypot -->
+                <div class="hidden">
+                    <label>
+                        Don’t fill this out if you’re human:
+                        <input name="bot-field" />
                     </label>
+                </div>
 
-                    <button type="submit" class="btn btn-primary rounded-full mt-2"> Send request </button>
-                </form>
-            </div>
+                <!-- Section: Event Details -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="inline-flex items-center justify-center rounded-full bg-emerald-500/10 text-emerald-300 px-4 py-1 text-xs font-semibold uppercase tracking-[0.18em]"
+                        >
+                            Event Details
+                        </div>
+                        <p class="text-xs text-slate-400">Basic information so we can tailor your quote.</p>
+                    </div>
+
+                    <div class="grid gap-4 md:grid-cols-2">
+                        <div class="space-y-1.5">
+                            <label for="event-type" class="text-sm font-medium text-slate-100">
+                                Event type<span class="text-amber-300">*</span>
+                            </label>
+                            <select
+                                id="event-type"
+                                name="eventType"
+                                required
+                                class="w-full rounded-lg bg-slate-900/80 border border-slate-700 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400/80 focus:border-transparent"
+                            >
+                                <option value="">Select an event type</option>
+                                <option>Wedding</option>
+                                <option>Engagement party</option>
+                                <option>Birthday celebration</option>
+                                <option>Corporate event</option>
+                                <option>Holiday party</option>
+                                <option>Private dinner</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <label for="event-date" class="text-sm font-medium text-slate-100">
+                                Event date<span class="text-amber-300">*</span>
+                            </label>
+                            <input
+                                id="event-date"
+                                name="eventDate"
+                                type="date"
+                                required
+                                class="w-full rounded-lg bg-slate-900/80 border border-slate-700 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400/80 focus:border-transparent"
+                            />
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <label for="guest-count" class="text-sm font-medium text-slate-100">
+                                Estimated guest count<span class="text-amber-300">*</span>
+                            </label>
+                            <input
+                                id="guest-count"
+                                name="guestCount"
+                                type="number"
+                                min="1"
+                                required
+                                placeholder="e.g., 75"
+                                class="w-full rounded-lg bg-slate-900/80 border border-slate-700 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400/80 focus:border-transparent"
+                            />
+                            <p class="text-xs text-slate-400">A rough estimate is fine—details can be refined closer to the event.</p>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <label for="event-start" class="text-sm font-medium text-slate-100"> Service start time </label>
+                            <input
+                                id="event-start"
+                                name="eventStartTime"
+                                type="time"
+                                class="w-full rounded-lg bg-slate-900/80 border border-slate-700 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400/80 focus:border-transparent"
+                            />
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <label for="service-hours" class="text-sm font-medium text-slate-100"> Estimated service duration </label>
+                            <select
+                                id="service-hours"
+                                name="serviceDuration"
+                                class="w-full rounded-lg bg-slate-900/80 border border-slate-700 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400/80 focus:border-transparent"
+                            >
+                                <option value="">Select duration</option>
+                                <option>2 hours</option>
+                                <option>3 hours</option>
+                                <option>4 hours</option>
+                                <option>5 hours</option>
+                                <option>6+ hours</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <label for="event-city" class="text-sm font-medium text-slate-100"> Event city / area </label>
+                            <input
+                                id="event-city"
+                                name="eventCity"
+                                type="text"
+                                placeholder="e.g., Austin, TX"
+                                class="w-full rounded-lg bg-slate-900/80 border border-slate-700 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400/80 focus:border-transparent"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section: Venue Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="inline-flex items-center justify-center rounded-full bg-emerald-500/10 text-emerald-300 px-4 py-1 text-xs font-semibold uppercase tracking-[0.18em]"
+                        >
+                            Venue Info
+                        </div>
+                        <p class="text-xs text-slate-400">A few details about the space and setup.</p>
+                    </div>
+
+                    <div class="grid gap-4 md:grid-cols-2">
+                        <div class="space-y-1.5">
+                            <label for="venue-type" class="text-sm font-medium text-slate-100"> Venue type </label>
+                            <select
+                                id="venue-type"
+                                name="venueType"
+                                class="w-full rounded-lg bg-slate-900/80 border border-slate-700 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400/80 focus:border-transparent"
+                            >
+                                <option value="">Select venue type</option>
+                                <option>Private residence</option>
+                                <option>Event venue</option>
+                                <option>Restaurant / bar</option>
+                                <option>Outdoor space</option>
+                                <option>Office / corporate space</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <span class="text-sm font-medium text-slate-100"> Service area </span>
+                            <div class="flex gap-3 text-sm">
+                                <label class="inline-flex items-center gap-2">
+                                    <input
+                                        type="radio"
+                                        name="indoorOutdoor"
+                                        value="Indoors"
+                                        class="rounded border-slate-600 bg-slate-900 text-amber-400 focus:ring-amber-400/80"
+                                    />
+                                    <span>Indoors</span>
+                                </label>
+                                <label class="inline-flex items-center gap-2">
+                                    <input
+                                        type="radio"
+                                        name="indoorOutdoor"
+                                        value="Outdoors"
+                                        class="rounded border-slate-600 bg-slate-900 text-amber-400 focus:ring-amber-400/80"
+                                    />
+                                    <span>Outdoors</span>
+                                </label>
+                                <label class="inline-flex items-center gap-2">
+                                    <input
+                                        type="radio"
+                                        name="indoorOutdoor"
+                                        value="Both"
+                                        class="rounded border-slate-600 bg-slate-900 text-amber-400 focus:ring-amber-400/80"
+                                    />
+                                    <span>Both</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1.5 md:col-span-2">
+                            <label for="venue-notes" class="text-sm font-medium text-slate-100"> Venue notes </label>
+                            <textarea
+                                id="venue-notes"
+                                name="venueNotes"
+                                rows={3}
+                                placeholder="Parking, elevators/stairs, distance to bar area, any restrictions, etc."
+                                class="w-full rounded-lg bg-slate-900/80 border border-slate-700 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400/80 focus:border-transparent resize-y"
+                            ></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section: Staffing -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="inline-flex items-center justify-center rounded-full bg-emerald-500/10 text-emerald-300 px-4 py-1 text-xs font-semibold uppercase tracking-[0.18em]"
+                        >
+                            Staffing
+                        </div>
+                        <p class="text-xs text-slate-400">Let us know how many team members you&rsquo;d like on-site.</p>
+                    </div>
+
+                    <div class="grid gap-4 md:grid-cols-2">
+                        <div class="space-y-2">
+                            <p class="text-sm font-medium text-slate-100">
+                                Number of bartenders<span class="text-amber-300">*</span>
+                            </p>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm">
+                                {
+                                    ['1 Bartender', '2 Bartenders', '3 Bartenders', '4 Bartenders', '5 Bartenders', '6+ Bartenders'].map((option) => (
+                                        <label class="relative">
+                                            <input type="radio" name="bartenders" value={option} required class="peer sr-only" />
+                                            <div class="flex items-center justify-center rounded-xl border border-slate-700 bg-slate-900/80 px-3 py-2.5 text-center cursor-pointer text-slate-200 peer-checked:border-amber-400 peer-checked:bg-amber-400/10 peer-checked:text-amber-200 transition">
+                                                {option}
+                                            </div>
+                                        </label>
+                                    ))
+                                }
+                            </div>
+                            <p class="text-xs text-slate-400">As a general guideline, we recommend ~1 bartender per 50–60 guests for standard service.</p>
+                        </div>
+
+                        <div class="space-y-2">
+                            <p class="text-sm font-medium text-slate-100">Food servers (optional)</p>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm">
+                                {
+                                    ['No servers', '1 Server', '2 Servers', '3+ Servers'].map((option) => (
+                                        <label class="relative">
+                                            <input type="radio" name="servers" value={option} class="peer sr-only" />
+                                            <div class="flex items-center justify-center rounded-xl border border-slate-700 bg-slate-900/80 px-3 py-2.5 text-center cursor-pointer text-slate-200 peer-checked:border-amber-400 peer-checked:bg-amber-400/10 peer-checked:text-amber-200 transition">
+                                                {option}
+                                            </div>
+                                        </label>
+                                    ))
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section: Beverage Service -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="inline-flex items-center justify-center rounded-full bg-emerald-500/10 text-emerald-300 px-4 py-1 text-xs font-semibold uppercase tracking-[0.18em]"
+                        >
+                            Beverage Service
+                        </div>
+                        <p class="text-xs text-slate-400">What would you like us to serve?</p>
+                    </div>
+
+                    <div class="grid gap-4 md:grid-cols-2">
+                        <div class="space-y-2">
+                            <p class="text-sm font-medium text-slate-100">Selections</p>
+                            <div class="grid grid-cols-2 gap-2 text-sm">
+                                {
+                                    [
+                                        'Signature cocktails',
+                                        'Full bar (spirits, wine, beer)',
+                                        'Beer & wine only',
+                                        'Mocktails / zero-proof',
+                                        'Champagne / sparkling toast',
+                                        'Soft drinks & juices'
+                                    ].map((option) => (
+                                        <label class="inline-flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-900/80 px-3 py-2 cursor-pointer text-slate-200 hover:border-amber-400/70 transition">
+                                            <input
+                                                type="checkbox"
+                                                name="beverageSelections"
+                                                value={option}
+                                                class="rounded border-slate-600 bg-slate-900 text-amber-400 focus:ring-amber-400/80"
+                                            />
+                                            <span class="text-xs md:text-sm">{option}</span>
+                                        </label>
+                                    ))
+                                }
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="alcohol-provided-by" class="text-sm font-medium text-slate-100"> Who will provide the alcohol? </label>
+                            <select
+                                id="alcohol-provided-by"
+                                name="alcoholProvider"
+                                class="w-full rounded-lg bg-slate-900/80 border border-slate-700 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400/80 focus:border-transparent"
+                            >
+                                <option value="">Select an option</option>
+                                <option>You provide all alcohol</option>
+                                <option>We provide a recommended shopping list</option>
+                                <option>We source and deliver alcohol (where permitted)</option>
+                                <option>Not sure yet</option>
+                            </select>
+
+                            <label for="menu-notes" class="text-sm font-medium text-slate-100 mt-3 block"> Cocktail / menu notes </label>
+                            <textarea
+                                id="menu-notes"
+                                name="menuNotes"
+                                rows={3}
+                                placeholder="Favorite spirits, must-have cocktails, themes, or any special bar requests."
+                                class="w-full rounded-lg bg-slate-900/80 border border-slate-700 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400/80 focus:border-transparent resize-y"
+                            ></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section: Add-ons -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="inline-flex items-center justify-center rounded-full bg-emerald-500/10 text-emerald-300 px-4 py-1 text-xs font-semibold uppercase tracking-[0.18em]"
+                        >
+                            Add-Ons
+                        </div>
+                        <p class="text-xs text-slate-400">Optional upgrades to complete your bar experience.</p>
+                    </div>
+
+                    <div class="grid gap-3 md:grid-cols-2">
+                        {
+                            [
+                                'Bar rental with linens',
+                                'Glassware rental',
+                                'Ice & cooler service',
+                                'Garnishes & fresh citrus',
+                                'Mixer package (sodas, juices, syrups)',
+                                'Custom cocktail menu signage',
+                                'Coffee / espresso station',
+                                'Water station / hydration setup'
+                            ].map((option) => (
+                                <label class="inline-flex items-start gap-2 rounded-lg border border-slate-700 bg-slate-900/80 px-3 py-2.5 cursor-pointer text-slate-200 hover:border-amber-400/70 transition text-sm">
+                                    <input
+                                        type="checkbox"
+                                        name="addons"
+                                        value={option}
+                                        class="mt-1 rounded border-slate-600 bg-slate-900 text-amber-400 focus:ring-amber-400/80"
+                                    />
+                                    <span>{option}</span>
+                                </label>
+                            ))
+                        }
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label for="add-on-notes" class="text-sm font-medium text-slate-100"> Add-on notes or special requests </label>
+                        <textarea
+                            id="add-on-notes"
+                            name="addonNotes"
+                            rows={3}
+                            placeholder="Tell us more about any specific rentals or custom elements you’d like."
+                            class="w-full rounded-lg bg-slate-900/80 border border-slate-700 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400/80 focus:border-transparent resize-y"
+                        ></textarea>
+                    </div>
+                </div>
+
+                <!-- Section: Contact Info -->
+                <div class="space-y-4 border-t border-slate-800 pt-6">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="inline-flex items-center justify-center rounded-full bg-emerald-500/10 text-emerald-300 px-4 py-1 text-xs font-semibold uppercase tracking-[0.18em]"
+                        >
+                            Contact Details
+                        </div>
+                        <p class="text-xs text-slate-400">So we can send your personalized quote.</p>
+                    </div>
+
+                    <div class="grid gap-4 md:grid-cols-2">
+                        <div class="space-y-1.5">
+                            <label for="name" class="text-sm font-medium text-slate-100">
+                                Your name<span class="text-amber-300">*</span>
+                            </label>
+                            <input
+                                id="name"
+                                name="name"
+                                type="text"
+                                required
+                                class="w-full rounded-lg bg-slate-900/80 border border-slate-700 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400/80 focus:border-transparent"
+                            />
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <label for="email" class="text-sm font-medium text-slate-100">
+                                Email address<span class="text-amber-300">*</span>
+                            </label>
+                            <input
+                                id="email"
+                                name="email"
+                                type="email"
+                                required
+                                class="w-full rounded-lg bg-slate-900/80 border border-slate-700 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400/80 focus:border-transparent"
+                            />
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <label for="phone" class="text-sm font-medium text-slate-100"> Phone number </label>
+                            <input
+                                id="phone"
+                                name="phone"
+                                type="tel"
+                                class="w-full rounded-lg bg-slate-900/80 border border-slate-700 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400/80 focus:border-transparent"
+                            />
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <label for="heard-about" class="text-sm font-medium text-slate-100"> How did you hear about us? </label>
+                            <select
+                                id="heard-about"
+                                name="heardAbout"
+                                class="w-full rounded-lg bg-slate-900/80 border border-slate-700 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400/80 focus:border-transparent"
+                            >
+                                <option value="">Select an option</option>
+                                <option>Google search</option>
+                                <option>Instagram</option>
+                                <option>Referral</option>
+                                <option>Venue recommendation</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label for="final-notes" class="text-sm font-medium text-slate-100"> Anything else we should know? </label>
+                        <textarea
+                            id="final-notes"
+                            name="finalNotes"
+                            rows={3}
+                            placeholder="Timeline, special surprises, dress code, must-haves, or anything else you’d like to share."
+                            class="w-full rounded-lg bg-slate-900/80 border border-slate-700 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400/80 focus:border-transparent resize-y"
+                        ></textarea>
+                    </div>
+
+                    <div class="pt-2 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                        <button
+                            type="submit"
+                            class="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-semibold bg-amber-400 text-slate-950 hover:bg-amber-300 transition shadow-lg shadow-amber-500/40"
+                        >
+                            Submit Quote Request
+                        </button>
+                        <p class="text-xs text-slate-400 max-w-sm">
+                            By submitting, you&rsquo;re simply requesting a quote&mdash;no payment or commitment required.
+                        </p>
+                    </div>
+                </div>
+            </form>
         </section>
     </main>
 </Layout>
