@@ -6,24 +6,114 @@ import Layout from '../layouts/Layout.astro';
     <main class="bg-slate-950 text-slate-100 min-h-screen">
         <!-- Hero -->
         <section class="relative overflow-hidden border-b border-slate-800">
-            <div class="absolute inset-0 opacity-40 bg-gradient-to-br from-amber-500/20 via-fuchsia-500/10 to-slate-900"></div>
-            <div class="relative max-w-5xl mx-auto px-4 py-16 md:py-20">
-                <p class="tracking-[0.25em] uppercase text-xs md:text-sm text-amber-300 mb-4">L&amp;V Mixology</p>
-                <h1 class="text-3xl md:text-5xl font-semibold leading-tight mb-4">
-                    Bespoke Cocktail Service<br class="hidden md:block" />
-                    for Unforgettable Events
-                </h1>
-                <p class="text-slate-300 max-w-2xl mb-8">
-                    Tell us about your event and we&rsquo;ll follow up with a tailored quote, curated bar menu, and staffing recommendations.
-                </p>
-                <div class="flex flex-wrap gap-4 items-center">
-                    <a
-                        href="#quote-form"
-                        class="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium bg-amber-400 text-slate-950 hover:bg-amber-300 transition"
-                    >
-                        Start Your Quote
-                    </a>
-                    <p class="text-xs md:text-sm text-slate-400">No obligation. We typically respond within one business day.</p>
+            <!-- Background image + overlay -->
+            <div class="absolute inset-0">
+                <img
+                    src="/images/hero-bar.jpg"
+                    alt="Elegant bar setup with cocktails and glassware"
+                    class="w-full h-full object-cover opacity-60"
+                    loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-br from-slate-950/90 via-slate-950/70 to-slate-950/95"></div>
+            </div>
+
+            <div class="relative max-w-5xl mx-auto px-4 py-16 md:py-20 flex flex-col md:flex-row gap-10 items-center">
+                <!-- Left: text -->
+                <div class="flex-1">
+                    <p class="tracking-[0.25em] uppercase text-xs md:text-sm text-amber-300 mb-4">L&amp;V Mixology</p>
+                    <h1 class="text-3xl md:text-5xl font-semibold leading-tight mb-4">
+                        Bespoke Cocktail Service<br class="hidden md:block" />
+                        for Unforgettable Events
+                    </h1>
+                    <p class="text-slate-200/90 max-w-xl mb-8 text-sm md:text-base">
+                        Elevated mobile bartending for weddings, private parties, and corporate events in and around Austin, TX. Curated menus, professional
+                        staff, and a seamless guest experience.
+                    </p>
+                    <div class="flex flex-wrap gap-4 items-center">
+                        <a
+                            href="#quote-form"
+                            class="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium bg-amber-400 text-slate-950 hover:bg-amber-300 transition shadow-lg shadow-amber-500/40"
+                        >
+                            Start Your Quote
+                        </a>
+                        <p class="text-xs md:text-sm text-slate-300">No obligation. We typically respond within one business day.</p>
+                    </div>
+
+                    <div class="mt-6 flex flex-wrap gap-6 text-xs md:text-sm text-slate-300">
+                        <div>
+                            <p class="font-semibold text-slate-100">Weddings &amp; Rehearsals</p>
+                            <p>Signature cocktails, champagne toasts, late-night espresso martinis.</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-slate-100">Private &amp; Corporate Events</p>
+                            <p>Office parties, brand activations, client events, and more.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: feature card with image -->
+                <div class="w-full md:w-72 lg:w-80 flex-shrink-0">
+                    <div class="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/70 shadow-2xl shadow-black/50">
+                        <img src="/images/cocktail-closeup.jpg" alt="Closeup of craft cocktail with garnish" class="w-full h-44 object-cover" loading="lazy" />
+                        <div class="p-4 space-y-2 text-sm">
+                            <p class="text-amber-300 font-semibold uppercase tracking-[0.18em] text-[0.7rem]">Craft Cocktails</p>
+                            <p class="font-medium text-slate-100">Seasonal menus &amp; custom creations</p>
+                            <p class="text-slate-300 text-xs">
+                                From classic old fashioneds to customized signature drinks, we design a bar program that fits your event &amp; guests.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services / Visual gallery -->
+        <section id="services" class="max-w-5xl mx-auto px-4 pt-10 md:pt-14 pb-4 md:pb-6 border-b border-slate-800/80">
+            <div class="flex flex-col md:flex-row gap-8 items-start md:items-center">
+                <div class="flex-1 space-y-3">
+                    <p class="tracking-[0.22em] uppercase text-[0.7rem] text-amber-300">Services</p>
+                    <h2 class="text-xl md:text-2xl font-semibold">Luxury mobile bartending tailored to your event</h2>
+                    <p class="text-sm md:text-base text-slate-300">
+                        Full-service bar setups including bar rentals, staffing, garnish and mixer packages, and curated cocktail menus. You bring the
+                        guests&mdash;we handle the bar.
+                    </p>
+                    <div class="grid grid-cols-2 gap-3 text-xs md:text-sm text-slate-200/90">
+                        <div class="space-y-1">
+                            <p class="font-semibold text-slate-100">What we handle</p>
+                            <ul class="space-y-1 text-slate-300">
+                                <li>&middot; Professional bartenders &amp; servers</li>
+                                <li>&middot; Bar setup &amp; breakdown</li>
+                                <li>&middot; Ice, coolers &amp; bar tools</li>
+                                <li>&middot; Garnishes &amp; mixers</li>
+                            </ul>
+                        </div>
+                        <div class="space-y-1">
+                            <p class="font-semibold text-slate-100">Perfect for</p>
+                            <ul class="space-y-1 text-slate-300">
+                                <li>&middot; Weddings &amp; receptions</li>
+                                <li>&middot; Milestone birthdays</li>
+                                <li>&middot; Corporate events</li>
+                                <li>&middot; Private in-home parties</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image strip -->
+                <div class="w-full md:w-64 lg:w-72 flex-shrink-0">
+                    <div class="grid grid-cols-2 gap-2">
+                        <div class="rounded-xl overflow-hidden border border-slate-800/70 bg-slate-900/80">
+                            <img src="/images/cocktail-flight.jpg" alt="Flight of colorful cocktails" class="w-full h-28 object-cover" loading="lazy" />
+                        </div>
+                        <div class="rounded-xl overflow-hidden border border-slate-800/70 bg-slate-900/80 translate-y-3">
+                            <img
+                                src="/images/pouring-drink.jpg"
+                                alt="Bartender pouring a drink behind the bar"
+                                class="w-full h-28 object-cover"
+                                loading="lazy"
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -224,7 +314,7 @@ import Layout from '../layouts/Layout.astro';
                 </div>
 
                 <!-- Section: Staffing -->
-                <div class="space-y-4">
+                <div id="staffing" class="space-y-4">
                     <div class="flex items-center gap-3">
                         <div
                             class="inline-flex items-center justify-center rounded-full bg-emerald-500/10 text-emerald-300 px-4 py-1 text-xs font-semibold uppercase tracking-[0.18em]"
@@ -273,7 +363,7 @@ import Layout from '../layouts/Layout.astro';
                 </div>
 
                 <!-- Section: Beverage Service -->
-                <div class="space-y-4">
+                <div id="beverages" class="space-y-4">
                     <div class="flex items-center gap-3">
                         <div
                             class="inline-flex items-center justify-center rounded-full bg-emerald-500/10 text-emerald-300 px-4 py-1 text-xs font-semibold uppercase tracking-[0.18em]"
